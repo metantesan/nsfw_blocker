@@ -35,12 +35,12 @@ async def handle_media_message(message: Message, is_video: bool = False):
             remove(file_path)
 
 
-@bot.on_message(filters.group & filters.chat(-1002038104161) & filters.photo | filters.sticker)
+@bot.on_message(filters.group & filters.photo | filters.sticker)
 async def media_handler(_, message: Message):
     await handle_media_message(message)
 
 
-@bot.on_message(filters.group & filters.chat(-1002038104161) & filters.animation)
+@bot.on_message(filters.group & filters.animation)
 async def animation_handler(_, message: Message):
     await handle_media_message(message, is_video=True)
 
